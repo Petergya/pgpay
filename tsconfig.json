@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/libery/Firebase.js", "src/app/component/UploadImage.js", "src/app/component/Signup.js", "src/app/page.js", "src/app/pages/fund-wallet.js", "src/app/pages/initiate-payment.js", "src/app/pages/transfer-to-bank.js", "src/app/layout.js"],
   "exclude": ["node_modules"]
 }
