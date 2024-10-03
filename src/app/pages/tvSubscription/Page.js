@@ -45,17 +45,17 @@ export default function TVSubscription() {
       console.error(error);
       alert('Error subscribing');
     } finally {
-      setIsProcessing(false); // End loading
+      setIsProcessing(false); 
     }
   };
 
   const handleConfirm = () => {
-    // Trigger the confirmation step
+    
     setConfirming(true);
   };
 
   const handleCancel = () => {
-    // Cancel the confirmation step and allow user to modify input
+    
     setConfirming(false);
   };
 

@@ -3,18 +3,18 @@ import { useState } from 'react';
 export default function BuyAirtime() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [amount, setAmount] = useState('');
-  const [confirming, setConfirming] = useState(false); // For payment confirmation
-  const [isProcessing, setIsProcessing] = useState(false); // For showing loading during payment
+  const [confirming, setConfirming] = useState(false); 
+  const [isProcessing, setIsProcessing] = useState(false); 
 
   const handleBuyAirtime = () => {
-    setIsProcessing(true); // Start loading indicator
+    setIsProcessing(true); 
     setTimeout(() => {
       alert(`Purchased airtime of ${amount} for ${phoneNumber}!`);
-      setIsProcessing(false); // Stop loading indicator
-      setConfirming(false); // Reset after success
-      setPhoneNumber(''); // Clear input
-      setAmount(''); // Clear input
-    }, 2000); // Simulate async process (e.g., API call)
+      setIsProcessing(false); 
+      setConfirming(false); 
+      setPhoneNumber(''); 
+      setAmount(''); 
+    }, 2000); 
   };
 
   const handleConfirm = () => {

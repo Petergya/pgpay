@@ -1,47 +1,46 @@
-// pages/transfer-to-bank.js
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function TransferToBank() {
+export default function WithdrawToBank() {
   const [bankCode, setBankCode] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
   const [amount, setAmount] = useState('');
-  const [confirming, setConfirming] = useState(false); // For confirmation step
-  const [isProcessing, setIsProcessing] = useState(false); // To show loading during transfer
+  const [confirming, setConfirming] = useState(false); 
+  const [isProcessing, setIsProcessing] = useState(false); 
 
-  const handleTransfer = async () => {
+  const handleWithdraw = async () => {
     try {
-      setIsProcessing(true); // Start processing
-      const response = await axios.post('/api/transfer-to-bank', {
+      setIsProcessing(true); 
+      const response = await axios.post('/api/withdraw-to-bank', {
         bankCode,
         accountNumber,
         amount,
       });
-      alert('Transfer successful');
-      // Reset form after transfer
+      alert('Withdrawal successful');
+      
       setBankCode('');
       setAccountNumber('');
       setAmount('');
       setConfirming(false);
     } catch (error) {
-      console.error('Error making transfer:', error);
-      alert('Failed to transfer funds');
+      console.error('Error making withdrawal:', error);
+      alert('Failed to withdraw funds');
     } finally {
-      setIsProcessing(false); // Stop processing
+      setIsProcessing(false); 
     }
   };
 
   const handleConfirm = () => {
-    setConfirming(true); // Move to confirmation step
+    setConfirming(true); 
   };
 
   const handleCancel = () => {
-    setConfirming(false); // Cancel confirmation
+    setConfirming(false); 
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h2 className="text-2xl font-bold mb-4">Transfer to Bank</h2>
+      <h2 className="text-2xl font-bold mb-4">Withdraw to Bank</h2>
 
       {!confirming ? (
         <>
@@ -70,22 +69,22 @@ export default function TransferToBank() {
             onClick={handleConfirm}
             className="bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600"
           >
-            Confirm and Proceed to Transfer
+            Confirm and Proceed to Withdraw
           </button>
         </>
       ) : (
         <>
-          <h3 className="text-xl font-bold mb-4">Confirm Bank Transfer</h3>
+          <h3 className="text-xl font-bold mb-4">Confirm Withdrawal</h3>
           <p><strong>Bank Code:</strong> {bankCode}</p>
           <p><strong>Account Number:</strong> {accountNumber}</p>
           <p><strong>Amount:</strong> ₦{amount}</p>
           <div className="mt-4">
             <button
-              onClick={handleTransfer}
+              onClick={handleWithdraw}
               disabled={isProcessing}
               className={`bg-green-500 text-white rounded-lg px-4 py-2 mr-4 ${isProcessing ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              {isProcessing ? 'Processing...' : 'Confirm and Transfer'}
+              {isProcessing ? 'Processing...' : 'Confirm and Withdraw'}
             </button>
             <button onClick={handleCancel} className="bg-red-500 text-white rounded-lg px-4 py-2">
               Cancel
@@ -96,4 +95,3 @@ export default function TransferToBank() {
     </div>
   );
 }
-
